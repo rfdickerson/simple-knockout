@@ -34,30 +34,34 @@ class SeatReservation {
 
 class AppViewModel {
 
-    firstName: KnockoutObservable<string>
-    lastName: KnockoutObservable<string>
-    fullName: KnockoutComputed<string>  
+    // totalSurcharge: KnockoutComputed<number>
 
     
-
-    availableMeals: [Meal]
-    seats: KnockoutObservableArray<SeatReservation>
+    // seats: KnockoutObservableArray<SeatReservation>
 
     constructor() {
        
-       this.availableMeals = [
+    }
+
+     availableMeals: [Meal] = [
            new Meal("Standard (sandwich)", 0),
            new Meal("Premium (lobster)", 34.95)
        ]
 
-       this.seats = ko.observableArray([
+       seats: KnockoutObservableArray<SeatReservation> = ko.observableArray([
            new SeatReservation("Steve", this.availableMeals[0]),
            new SeatReservation("Bert", this.availableMeals[0])
        ]);
 
-     
+     totalSurcharge: KnockoutComputed<number> = ko.computed(function() {
+           let total = 0;
+           for (let seat of this.seats()) {
+               total += seat.meal().price;
+           }
 
-    }
+           return total;
+        
+       }, this);
 
     addSeat() {
         this.seats.push(new SeatReservation("", this.availableMeals[0]));

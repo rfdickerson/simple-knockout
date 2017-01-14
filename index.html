@@ -34,6 +34,10 @@
 
 <button class="btn btn-default" data-bind="click: addSeat">Reserve another seat</button>
 
+<h3 data-bind="visible: totalSurcharge() > 0">
+    Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+</h3>
+
 </div>
 
         <script src="./externals/require.js"></script>
