@@ -5,15 +5,13 @@
         <title>Hello Knockout!</title>
     </head>
     <body>
+ 
         <p>
-            Hello from
-            <strong data-bind="text: language">todo</strong>
-            and
-            <strong data-bind="text: framework">todo</strong>!
+            Full name is <span data-bind="text: fullName">0</span>
         </p>
 
-        <p>Language: <input data-bind="value: language" /></p>
-        <p>Framework: <input data-bind="value: framework" /></p>
+        <p>First name: <input data-bind="value: firstName" /></p>
+        <p>Last name: <input data-bind="value: lastName" /></p>
 
         <script src="./externals/require.js"></script>
         <script src="./built/require-config.js"></script>
