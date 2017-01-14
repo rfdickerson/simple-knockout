@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Reservations</title>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservations</title>
 
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
 
-    </head>
-    <body>
- 
+</head>
 
-<div class="container">
+<body>
+
+
+    <div class="container">
 
         <h2>Your seat reservations</h2>
 
-<table class="table table-striped">
-    <thead><tr>
-        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
-        </tr></thead>
-    <tbody data-bind="foreach: seats">
-    <tr>
-        <td><input data-bind="value: name"/></td>
-        <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
-        <td data-bind="text: formattedPrice"></td>
-    </tr>    
-</tbody>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Passenger name</th>
+                    <th>Meal</th>
+                    <th>Surcharge</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: seats">
+                <tr>
+                    <td><input data-bind="value: name" /></td>
+                    <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td>
+                    <td data-bind="text: formattedPrice"></td>
+                </tr>
+            </tbody>
 
-<button class="btn btn-default" data-bind="click: addSeat">Reserve another seat</button>
+            <button class="btn btn-default" data-bind="click: addSeat">Reserve another seat</button>
 
-<h3 data-bind="visible: totalSurcharge() > 0">
-    Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
-</h3>
+            <h3 data-bind="visible: totalSurcharge() > 0">
+                Total surcharge: $<span data-bind="text: totalSurcharge().toFixed(2)"></span>
+            </h3>
 
-</div>
+    </div>
 
-        <script src="./externals/require.js"></script>
-        <script src="./built/require-config.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script>
+    <script src="./externals/require.js"></script>
+    <script src="./built/require-config.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script>
             require(["built/hello"]);
         </script>
-    </body>
+</body>
+
 </html>
