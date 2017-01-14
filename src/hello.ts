@@ -1,29 +1,59 @@
 import * as ko from "knockout";
 
+class Meal {
+
+    mealName: string
+    price: number
+
+    constructor(mealName: string, price: number) {
+        this.mealName = mealName 
+        this.price = price
+    }
+
+}
+
+class SeatReservation {
+
+    name: string
+    meal: KnockoutObservable<Meal>
+
+    constructor(name: string, initialMeal: Meal) {
+        this.name = name;
+        this.meal = ko.observable(initialMeal);
+    }
+
+}
+
 class AppViewModel {
 
     firstName: KnockoutObservable<string>
     lastName: KnockoutObservable<string>
     fullName: KnockoutComputed<string>  
 
-    constructor(firstName: string, lastName: string) {
-        this.firstName = ko.observable("Bert");
-        this.lastName = ko.observable("Bertington");
+    availableMeals: [Meal]
+    seats: KnockoutObservableArray<SeatReservation>
 
-        this.fullName = ko.computed(function() {
-            return this.firstName() + " " + this.lastName();
-            }, this);        
+    constructor() {
+       
+       this.availableMeals = [
+           new Meal("Standard (sandwich)", 0),
+           new Meal("Premium (lobster)", 34.95)
+       ]
+
+       this.seats = ko.observableArray([
+           new SeatReservation("Steve", this.availableMeals[0]),
+           new SeatReservation("Bert", this.availableMeals[0])
+       ]);
+
     }
 
-    capitalizeLastName () {
-        var currentVal = this.lastName();
-        this.lastName(currentVal.toUpperCase());
+    addSeat() {
+        this.seats.push(new SeatReservation("", this.availableMeals[0]));
     }
 
-    
 }
 
-ko.applyBindings(new AppViewModel("Bert", "Bertington"));
+ko.applyBindings(new AppViewModel());
 
 // class HelloViewModel {
 //     language: KnockoutObservable<string>
