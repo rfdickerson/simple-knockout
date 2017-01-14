@@ -15,6 +15,11 @@ class AppViewModel {
             }, this);        
     }
 
+    capitalizeLastName () {
+        var currentVal = this.lastName();
+        this.lastName(currentVal.toUpperCase());
+    }
+
     
 }
 
