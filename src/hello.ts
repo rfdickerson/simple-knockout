@@ -40,12 +40,13 @@ class AppViewModel {
 
     availableMeals: [Meal] = [
         new Meal("Standard (sandwich)", 0),
-        new Meal("Premium (lobster)", 34.95)
+        new Meal("Premium (lobster)", 34.95),
+        new Meal("Coquilles Saint-Jacques", 70.00)
     ]
 
     seats: KnockoutObservableArray<SeatReservation> = ko.observableArray([
         new SeatReservation("Steve", this.availableMeals[0]),
-        new SeatReservation("Bert", this.availableMeals[0])
+        new SeatReservation("Bert", this.availableMeals[2])
     ]);
 
     totalSurcharge: KnockoutComputed<number> = ko.computed(function () {
